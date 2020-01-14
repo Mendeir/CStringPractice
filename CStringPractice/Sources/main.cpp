@@ -4,14 +4,13 @@
 
 
 void lengthString();
+void copyString();
 bool tryAgain();
 int menu();
 
 
 int main()
 {
-	
-
 	do
 	{
 		system("cls");
@@ -19,6 +18,9 @@ int main()
 		{
 			case 1:
 				lengthString();
+				break;
+			case 2:
+				copyString();
 				break;
 			default: 
 				std::cout << "Invalid input! Please try again!";
@@ -35,7 +37,7 @@ int main()
 void lengthString()
 {
 	//title
-	std::cout << "\n-----METHOD 1-----\n";
+	std::cout << "\n-----LENGTH OF A STRING-----\n";
 
 	//init
 	const int sentenceSize = 100;
@@ -50,6 +52,35 @@ void lengthString()
 
 	//output
 	std::cout << "Length of a string: " << length << '\n';
+
+}
+
+void copyString()
+{
+	//title 
+	std::cout << "\n-----COPY STRING-----\n";
+
+	//init
+	const int sentenceSize = 100;
+	char sentence[sentenceSize];
+	char copySentence[sentenceSize];
+	int counter = 0;
+
+	//get input
+	std::cout << "\nEnter a string: ";
+	std::cin.getline(sentence, sentenceSize);
+
+	//copy string
+	for (counter = 0; counter < (static_cast<int>(strlen(sentence))); ++counter)
+		copySentence[counter] = sentence[counter];
+
+	//terminate copysentence
+	copySentence[counter] = '\0';
+
+	//output
+	std::cout << "\nOriginal sentence: " << sentence;
+	std::cout << "\nCopied sentence: " << copySentence << '\n';
+
 
 }
 
