@@ -5,6 +5,7 @@
 
 void lengthString();
 void copyString();
+void concatenateString();
 bool tryAgain();
 int menu();
 
@@ -21,6 +22,9 @@ int main()
 				break;
 			case 2:
 				copyString();
+				break;
+			case 3:
+				concatenateString();
 				break;
 			default: 
 				std::cout << "Invalid input! Please try again!";
@@ -84,6 +88,45 @@ void copyString()
 
 }
 
+void concatenateString()
+{
+	//title
+	std::cout << "\n-----CONCATENATE STRING-----\n";
+
+	//init
+	const int sentenceSize = 100;
+	char sentence[sentenceSize], sentence1[sentenceSize];
+	int length, length1;
+	int counter = 0, counter1 = 0;
+
+	//get input
+	std::cout << "\nEnter string number 1: ";
+	std::cin.getline(sentence, sentenceSize);
+
+	std::cout << "Enter string number 2: ";
+	std::cin.getline(sentence1, sentenceSize);
+
+	//add string together
+	length = strlen(sentence);
+	length1 = strlen(sentence1);
+
+	counter = length;
+
+	while (counter1 != length1)
+	{
+		sentence[counter] = sentence1[counter1];
+		++counter;
+		++counter1;
+	}
+
+	//terminate sentence
+	sentence[counter] = '\0';
+
+	//display output
+
+	std::cout << "\nConcatenated string: " << sentence << '\n';
+}
+
 bool tryAgain()
 {
 	char choice;
@@ -107,7 +150,8 @@ int menu()
 		
 		std::cout << "-----MENU-----\n"
 			<< "\n\t1. Length of a String"
-			<< "\n\t2. Copy String\n";
+			<< "\n\t2. Copy String"
+			<< "\n\t3. Concatenate String\n";
 
 		std::cout << "\nChoose a number: ";
 		std::cin >> choice;
